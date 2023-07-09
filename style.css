@@ -1,0 +1,245 @@
+:root {
+    --clock-width: 750px;
+    --clock-height: 750px;
+    --clock-dial-depth: 100px;
+    --clock-dial-number-padding: 2.55cqi;
+    --radius-origin: calc(var(--clock-width) / 2);
+    --arm-background: rgba(0, 0, 0, .85);
+    --arm-width: 1px;
+    --arm-height: 50%;
+    --clock-delay-hours: 0ms;
+    --clock-delay-minutes: 0ms;
+    --clock-delay-seconds: 0ms;
+    --clock-face-width: calc(var(--clock-width) - (var(--clock-dial-depth) * 5));
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner {
+    width: var(--clock-width);
+    height: var(--clock-height);
+    border-radius: 412%;
+    position: relative;
+}
+
+@keyframes turn {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.days {
+    --radius-origin: calc(((var(--clock-width) - (var(--clock-dial-depth) * 1)) - var(--clock-dial-number-padding)) / 2);
+    width: calc(var(--clock-width) - (var(--clock-dial-depth) * 1));
+    height: calc(var(--clock-height) - (var(--clock-dial-depth) * 1));
+    border-radius: 412%;
+    background: rgba(0, 0, 0, .05);
+    border: 1px solid rgba(0, 0, 0, .25);
+    box-shadow: 0 0 50px rgba(0, 0, 0, .4);
+    position: absolute;
+    top: calc((var(--clock-dial-depth) * 1) / 2);
+    left: calc((var(--clock-dial-depth) * 1) / 2);
+}
+
+.hours {
+    --radius-origin: calc(((var(--clock-width) - (var(--clock-dial-depth) * 2)) - var(--clock-dial-number-padding)) / 2);
+    width: calc(var(--clock-width) - (var(--clock-dial-depth) * 2));
+    height: calc(var(--clock-height) - (var(--clock-dial-depth) * 2));
+    border-radius: 412%;
+    background: rgba(0, 0, 0, .05);
+    position: absolute;
+    top: calc((var(--clock-dial-depth) * 2) / 2);
+    left: calc((var(--clock-dial-depth) * 2) / 2);
+}
+
+.minutes {
+    --radius-origin: calc(((var(--clock-width) - (var(--clock-dial-depth) * 3)) - var(--clock-dial-number-padding)) / 2);
+    width: calc(var(--clock-width) - (var(--clock-dial-depth) * 3));
+    height: calc(var(--clock-height) - (var(--clock-dial-depth) * 3));
+    border-radius: 412%;
+    background: rgba(0, 0, 0, .05);
+    position: absolute;
+    top: calc((var(--clock-dial-depth) * 3) / 2);
+    left: calc((var(--clock-dial-depth) * 3) / 2);
+}
+
+.seconds {
+    --radius-origin: calc(((var(--clock-width) - (var(--clock-dial-depth) * 4)) - var(--clock-dial-number-padding)) / 2);
+    width: calc(var(--clock-width) - (var(--clock-dial-depth) * 4));
+    height: calc(var(--clock-height) - (var(--clock-dial-depth) * 4));
+    border-radius: 412%;
+    background: rgba(0, 0, 0, .05);
+    position: absolute;
+    top: calc((var(--clock-dial-depth) * 4) / 2);
+    left: calc((var(--clock-dial-depth) * 4) / 2);
+}
+
+.face {
+    --radius-origin: calc(((var(--clock-width) - (var(--clock-dial-depth) * 5)) - var(--clock-dial-number-padding)) / 2);
+    width: calc(var(--clock-width) - (var(--clock-dial-depth) * 5));
+    height: calc(var(--clock-height) - (var(--clock-dial-depth) * 5));
+    border-radius: 412%;
+    background: rgba(0, 0, 0, .0);
+    position: absolute;
+    top: calc((var(--clock-dial-depth) * 5) / 2);
+    left: calc((var(--clock-dial-depth) * 5) / 2);
+}
+
+.days {
+    --numbers-count: 31;
+    --numbers-position-ofset: 7.78;
+    --numbers-font-size: .8rem;
+}
+
+.hours {
+    --numbers-count: 12;
+    --numbers-position-ofset: 3;
+    --numbers-font-size: .8rem;
+}
+
+.minutes {
+    --numbers-count: 60;
+    --numbers-position-ofset: 14.955;
+    --numbers-font-size: .8rem;
+}
+
+.seconds {
+    --numbers-count: 60;
+    --numbers-position-ofset: 14.955;
+    --numbers-font-size: .8rem;
+}
+
+.number:nth-child(1) { --numbers-index: 1; }
+.number:nth-child(2) { --numbers-index: 2; }
+.number:nth-child(3) { --numbers-index: 3; }
+.number:nth-child(4) { --numbers-index: 4; }
+.number:nth-child(5) { --numbers-index: 5; }
+.number:nth-child(6) { --numbers-index: 6; }
+.number:nth-child(7) { --numbers-index: 7; }
+.number:nth-child(8) { --numbers-index: 8; }
+.number:nth-child(9) { --numbers-index: 9; }
+.number:nth-child(10) { --numbers-index: 10; }
+.number:nth-child(11) { --numbers-index: 11; }
+.number:nth-child(12) { --numbers-index: 12; }
+.number:nth-child(13) { --numbers-index: 13; }
+.number:nth-child(14) { --numbers-index: 14; }
+.number:nth-child(15) { --numbers-index: 15; }
+.number:nth-child(16) { --numbers-index: 16; }
+.number:nth-child(17) { --numbers-index: 17; }
+.number:nth-child(18) { --numbers-index: 18; }
+.number:nth-child(19) { --numbers-index: 19; }
+.number:nth-child(20) { --numbers-index: 20; }
+.number:nth-child(21) { --numbers-index: 21; }
+.number:nth-child(22) { --numbers-index: 22; }
+.number:nth-child(23) { --numbers-index: 23; }
+.number:nth-child(24) { --numbers-index: 24; }
+.number:nth-child(25) { --numbers-index: 25; }
+.number:nth-child(26) { --numbers-index: 26; }
+.number:nth-child(27) { --numbers-index: 27; }
+.number:nth-child(28) { --numbers-index: 28; }
+.number:nth-child(29) { --numbers-index: 29; }
+.number:nth-child(30) { --numbers-index: 30; }
+.number:nth-child(31) { --numbers-index: 31; }
+.number:nth-child(32) { --numbers-index: 32; }
+.number:nth-child(33) { --numbers-index: 33; }
+.number:nth-child(34) { --numbers-index: 34; }
+.number:nth-child(35) { --numbers-index: 35; }
+.number:nth-child(36) { --numbers-index: 36; }
+.number:nth-child(37) { --numbers-index: 37; }
+.number:nth-child(38) { --numbers-index: 38; }
+.number:nth-child(39) { --numbers-index: 39; }
+.number:nth-child(40) { --numbers-index: 40; }
+.number:nth-child(41) { --numbers-index: 41; }
+.number:nth-child(42) { --numbers-index: 42; }
+.number:nth-child(43) { --numbers-index: 43; }
+.number:nth-child(44) { --numbers-index: 44; }
+.number:nth-child(45) { --numbers-index: 45; }
+.number:nth-child(46) { --numbers-index: 46; }
+.number:nth-child(47) { --numbers-index: 47; }
+.number:nth-child(48) { --numbers-index: 48; }
+.number:nth-child(49) { --numbers-index: 49; }
+.number:nth-child(50) { --numbers-index: 50; }
+.number:nth-child(51) { --numbers-index: 51; }
+.number:nth-child(52) { --numbers-index: 52; }
+.number:nth-child(53) { --numbers-index: 53; }
+.number:nth-child(54) { --numbers-index: 54; }
+.number:nth-child(55) { --numbers-index: 55; }
+.number:nth-child(56) { --numbers-index: 56; }
+.number:nth-child(57) { --numbers-index: 57; }
+.number:nth-child(58) { --numbers-index: 58; }
+.number:nth-child(59) { --numbers-index: 59; }
+.number:nth-child(60) { --numbers-index: 60; }
+
+.days .number, .hours .number, .minutes .number, .seconds .number {
+    --angle: calc((360deg / var(--numbers-count)) * (var(--numbers-index) - var(--numbers-position-ofset)));
+    --x: calc(var(--radius-origin) + (var(--radius-origin) * cos(var(--angle))));
+    --y: calc(var(--radius-origin) + (var(--radius-origin) * sin(var(--angle))));
+    display: grid;
+    height: var(--clock-dial-number-padding);
+    left: var(--x);
+    place-content: center;
+    position: absolute;
+    top: var(--y);
+    width: var(--clock-dial-number-padding);
+    font-family: 'Bubbler One', sans-serif;
+    font-size: var(--numbers-font-size);
+}
+
+.arm__hours {
+    --arm-background: #333;
+    --arm-height: 110px;
+    --arm-width: 3px;
+
+    animation-delay: var(--clock-delay-hours, 0ms);
+    animation: turn 43200s linear infinite; /* 60 * 60 * 12 */
+    position: relative;
+}
+
+.arm__minutes {
+    --arm-background: #333;
+    --arm-height: 145px;
+    --arm-width: 1px;
+
+    animation-delay: var(--clock-delay-minutes, 0ms);
+    animation: turn 3600s steps(60, end) infinite;
+    position: relative;
+}
+
+.arm__seconds {
+    --arm-background: #f00;
+    --arm-height: 100px;
+    --arm-width: 1px;
+
+    animation-delay: var(--clock-delay-seconds, 0ms);
+    animation: turn 60s linear infinite;
+    position: relative;
+}
+
+.arm {
+    background-color: var(--arm-background);
+    border-radius: calc(var(--arm-width) * 2);
+    display: block;
+    height: var(--arm-height);
+    left: calc((var(--clock-face-width) - var(--arm-width)) / 2);
+    position: absolute;
+    top: calc((var(--clock-face-width) / 2) - var(--arm-height));
+    transform: rotate(0deg);
+    transform-origin: bottom;
+    width: var(--arm-width);
+}
